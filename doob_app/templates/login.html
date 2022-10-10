@@ -1,0 +1,98 @@
+{% include 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-style-mode" content="1">
+
+    <title>Profile || Doob Business and Consulting Bootstrap5 Template</title>
+</head>
+
+<body>
+    <main class="page-wrapper">
+        <div class="rainbow-prfile-area rainbow-section-gap">
+            <div class="container">
+                <div class="row gy-5 row--30">
+                    <div class="col-lg-6">
+                        <div class="edu-contact-form contact-form-style-1 w-100">
+                            <div class="section-title">
+                                <h2 class="title w-600 mb--40">Login</h2>
+                            </div>
+                            <form method="post" id="contact-form" class="w-100">
+                                {% csrf_token %}
+                                {% if messages %}
+                                {% for m in messages %}
+                                {{m}}
+                                {% endfor %}
+                                {% endif %}
+                                {% for fm in form %}
+                                <div class="form-group position-relative">
+                                    {{fm.label_tag}}
+                                    {{fm}} {{fm.errors|striptags}}
+                                </div>
+                                {% endfor %}
+
+                                 {% if form.non_field_errors %}
+                                {% for error in form.non_field_errors %}
+                                {{error}}
+                                {% endfor %}
+                                {% endif %}
+                                <div class="row mb--30">
+                                    <div class="col-lg-6">
+                                        <div class="edu-lost-password text-end">
+                                            <a class="btn-read-more" href="{% url 'password_reset' %}"><span>Forget password</span></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="edu-lost-password text-end">
+                                            <a class="btn-read-more" href="{% url 'AdminForgetPassword' %}"><span>Reset password</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-submit-group">
+                                    <button class="btn-default btn-large w-100">Log In<i class="feather-arrow-right"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-area copyright-style-one">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-8 col-sm-12 col-12">
+                        <div class="copyright-left">
+                            <ul class="ft-menu link-hover">
+                                <li>
+                                    <a href="privacy-policy.html">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms And Condition</a>
+                                </li>
+                                <li>
+                                    <a href="contact.html">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-12 col-12">
+                        <div class="copyright-right text-center text-lg-end">
+                            <p class="copyright-text">© Doob 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="rainbow-back-top">
+        <i class="feather-arrow-up"></i>
+    </div>
+</body>
+</html>

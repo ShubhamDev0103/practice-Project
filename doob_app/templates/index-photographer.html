@@ -1,0 +1,224 @@
+{% include 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-style-mode" content="1">
+
+    <title>Photographer || Doob Business and Consulting Bootstrap5 Template</title>
+    {% block css %}{% endblock css %}
+</head>
+
+<body>
+    <main class="page-wrapper">
+        {% block header %}{% endblock header %}
+
+        {% comment %} {{details}} {% endcomment %}
+        <div class="popup-mobile-menu">
+            <div class="inner">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img class="logo-light" src="{% static 'images/logo/logo.png' %}" alt="Corporate Logo">
+                            <img class="logo-dark" src="{% static 'images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                        </a>
+                    </div>
+                    <div class="close-menu">
+                        <button class="close-button">
+                            <i class="feather-x"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="rainbow-gradient-circle"></div>
+            <div class="rainbow-gradient-circle theme-pink"></div>
+        </div>
+
+        <div class="slider-area slider-style-1 variation-3 bg-transparent pt--180 pb--100 pt_sm--100 pb_sm--50">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="inner text-center">
+                            {% comment %} <h1 class="title display-two"><span class="color-white">{{request.user |
+                                    upper}}</span> {% endcomment %}
+                                <br>
+                                <span class="header-caption">
+                                    <span class="cd-headline clip is-full-width">
+                                        <span class="cd-words-wrapper">
+                                            <b class="is-visible theme-gradient">Hello</b>
+                                            <b class="is-hidden theme-gradient">I ' Am</b>
+                                            <b class="is-hidden theme-gradient">{{request.user | upper}}</b>
+                                        </span>
+                                    </span>
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rainbow-portfolio-area rainbow-section-gapBottom masonary-wrapper-activation">
+            <div class="wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="rainbow-portfolio-filter filter-button-default messonry-button text-center mb--60">
+                            <button data-filter="*" class="is-checked"><span class="filter-text">All</span></button>
+                            <button data-filter=".cat--1"><span class="filter-text">design</span></button>
+                            <button data-filter=".cat--2"><span class="filter-text">art</span></button>
+                            <button data-filter=".cat--3"><span class="filter-text">Digital</span></button>
+                            <button data-filter=".cat--4"><span class="filter-text">development</span></button>
+                        </div>
+                        <div class="rainbow-portfolio-details rainbow-section-gap">
+                            <div class="container">
+                                <!-- <div class="row"> -->
+                                <div class="col-lg-10 offset-lg-1">
+                                    <div class="inner">
+                                        {% for i in details %}
+                                        <div class="details-list">
+                                            <div class="thumbnail alignwide"><img class="radius w-100" src="{{i.photo}}"
+                                                    alt="Corporate Image"></div>
+                                            <div class="row mt--40 row--30">
+                                                <div class="col-lg-6">
+                                                    <div class="content-left">
+                                                        <form action="{% url 'Profile' %}" method="post">
+                                                            <h4 class="title">{{i.title}}</h4>
+                                                            <div class="single-list-wrapper">
+                                                                <div class="single-list"><label>Zip Code / Pin
+                                                                        Code</label><span>{{i.zip_code}}</span>
+                                                                </div>
+                                                                <div class="single-list">
+                                                                    <label>Country</label><span>{{i.State}}</span>
+                                                                </div>
+                                                                <div class="single-list">
+                                                                    <label>State</label><span>{{i.County}}</span>
+                                                                </div>
+                                                                <div class="single-list">
+                                                                    <label>City</label><span>{{i.City}}</span>
+                                                                </div>
+                                                                <div class="single-list">
+                                                                    <label>Date
+                                                                        joined</label><span>{{date_joined}}</span>
+                                                                </div>
+                                                                <div class="single-list">
+                                                                    <label>last Login</label><span>{{last_login}}</span>
+                                                                </div>
+                                                                <div class="single-list">
+                                                                    <label>Token</label><span>{{token}}</span>
+                                                                </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mt_md--30 mt_sm--30 float-right">
+                                                <div class="content-right float-right">
+                                                    <div class="description text-center float-right">
+                                                        <p>{{i.address}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Start Load More Button  -->
+            <div class="row row--15">
+                <div class="col-lg-12">
+                    <div class="rainbow-load-more text-center mt--60">
+                    <form action="" method="get" enctype="application/x-www-form-urlencoded">
+                        <a href="{% url 'delete' %}" class="btn btn-default btn-large btn-icon">
+                            <span>Load More <span class="icon feather-loader"></span></span>
+                        </a>
+                    </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End Load More Button  -->
+        </div>
+        
+
+
+        <footer class="rainbow-footer footer-style-default variation-two">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+                            <div class="rainbow-footer-widget">
+                                <h4 class="title">Services</h4>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="portfolio.html">Portfolio</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="service.html">Service</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+                            <div class="rainbow-footer-widget">
+                                <div class="widget-menu-top">
+                                    <h4 class="title">Solutions</h4>
+                                    <div class="inner">
+                                        <ul class="footer-link link-hover">
+                                            <li><a href="brand.html">Brand</a></li>
+                                            <li><a href="call-to-action.html">call To Action</a>
+                                            </li>
+                                            <li><a href="counter.html">Counter</a></li>
+                                            <li><a href="service.html">Service</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+                            <div class="rainbow-footer-widget">
+                                <h4 class="title">Company</h4>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        <li><a href="pricing.html">Pricing</a></li>
+                                        <li><a href="tab.html">Tab Styles</a></li>
+                                        <li><a href="service.html">Service</a></li>
+                                        <li><a href="social-share.html">Social</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6 col-sm-6 col-12">
+                            <div class="rainbow-footer-widget">
+                                <h4 class="title">Resources</h4>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        <li><a href="team.html">Team</a></li>
+                                        <li><a href="testimonial.html">Testimonial</a></li>
+                                        <li><a href="service.html">Service</a></li>
+                                        <li><a href="timeline.html">Timeline</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <div class="rainbow-back-top">
+        <i class="feather-arrow-up"></i>
+    </div>
+
+    {% block javascript %}{% endblock javascript %}
+</body>
+
+</html>
